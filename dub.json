@@ -1,0 +1,12 @@
+{
+	"name": "siyo",
+	"description": "Project management",
+	"copyright": "Copyright © 2017, Anders Andersson",
+	"authors": ["Anders Andersson"],
+	"dependencies": {
+		"vibe-d": ">=0.7.26",
+		"mondo": ">=1.1.3",
+		"dcrypto": "~>1.2.2"
+	},
+	"versions": ["VibeDefaultMain"]
+}
