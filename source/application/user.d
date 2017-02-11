@@ -13,9 +13,11 @@ import boiler.helpers;
 
 class User_model {
 	Mongo mongo;
+	Db db;
 
 	void setup(Mongo m, ref Model_method[string][string] models) {
 		mongo = m;
+		db = m["journal"];
 		models["user"]["get_current_user_id"] = Model_method(
 			[],
 			&this.get_current_user_id
@@ -59,7 +61,7 @@ class User_model {
 		string username = req.json["username"].to!string;
 		string password = req.json["password"].to!string;
 
-		Collection user_collection = mongo.journal.user;
+		Collection user_collection = db.user;
 
 		Query q = new Query();
 		q.conditions["name"] = username;
@@ -97,7 +99,7 @@ class User_model {
 		string username = req.json["username"].to!string;
 		string password = req.json["password"].to!string;
 
-		Collection user_collection = mongo.journal.user;
+		Collection user_collection = db.user;
 
 		auto success = false;
 		try {
@@ -137,7 +139,7 @@ class User_model {
 			return;
 		}
 
-		Collection user_collection = mongo.journal.user;
+		Collection user_collection = db.user;
 		user_collection.remove(BO(
 				"name", username
 			)
