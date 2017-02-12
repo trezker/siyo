@@ -9,9 +9,9 @@ var loginViewModel = {
 		data.method = "login_password";
 		ajax_post(data, function(returnedData) {
 			console.log(returnedData);
-		    if(returnedData == true) {
-	    		window.location.href = window.location.href;
-		    }
+			if(returnedData == true) {
+				window.location.href = window.location.href;
+			}
 		});
 	},
 	sign_up : function() {
@@ -21,9 +21,9 @@ var loginViewModel = {
 		data.method = "create_user";
 		ajax_post(data, function(returnedData) {
 			console.log(returnedData);
-		    if(returnedData == true) {
-		    	loginViewModel.sign_in();
-		    }
+			if(returnedData == true) {
+				loginViewModel.sign_in();
+			}
 		});
 	}
 };

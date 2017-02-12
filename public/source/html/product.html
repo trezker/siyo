@@ -1,0 +1,25 @@
+<div class="col-md-3">
+	<div class="col-md-6">
+		<label>My products</label>
+	</div>
+	<button type="submit" class="col-md-6 btn btn-success btn-xs">
+		New product
+	</button>
+</div>
+
+<div class="col-md-9">
+	<div id="login_form">
+		<h2>New product</h2>
+		<div class="form-group">
+			<label>Title</label>
+			<input class="form-control" data-bind="value: model.title"/>
+		</div>
+		<!-- ko if: model.created != "" -->
+		<div class="form-group">
+			<label>Created</label>
+			<span data-bind="text: model.created" />
+		</div>
+		<!-- /ko -->
+		<button data-bind="click: save_product" class="btn btn-success">Save product</button>
+	</div>
+</div>

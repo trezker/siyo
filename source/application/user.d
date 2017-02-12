@@ -11,17 +11,20 @@ import boiler.server;
 import boiler.model;
 import boiler.helpers;
 
+import application.helpers;
+
 class User_model {
 	Mongo mongo;
 	Db db;
 
 	void setup(Mongo m, ref Model_method[string][string] models) {
 		mongo = m;
-		db = m["journal"];
+		db = m["siyo"];
+		/*
 		models["user"]["get_current_user_id"] = Model_method(
 			[],
 			&this.get_current_user_id
-		);
+		);*/
 		models["user"]["login_password"] = Model_method(
 			[],
 			&this.login_password
@@ -39,16 +42,16 @@ class User_model {
 			&this.delete_user
 		);
 	}
-
+/*
 	void get_current_user_id(HTTPServerRequest req, HTTPServerResponse res) {
 		if(!req.session) {
 			res.writeJsonBody(false);
 			return;
 		}
-		auto id = req.session.get!string("id");
+		auto id = get_current_user_id(req);// req.session.get!string("id");
 		res.writeJsonBody(id);
 	}
-
+*/
 	void login_password(HTTPServerRequest req, HTTPServerResponse res) {
 		//Do not allow double login, must log out first.
 		//But we'll help out by terminating the old session to get a clean state.
