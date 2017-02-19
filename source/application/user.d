@@ -42,16 +42,7 @@ class User_model {
 			&this.delete_user
 		);
 	}
-/*
-	void get_current_user_id(HTTPServerRequest req, HTTPServerResponse res) {
-		if(!req.session) {
-			res.writeJsonBody(false);
-			return;
-		}
-		auto id = get_current_user_id(req);// req.session.get!string("id");
-		res.writeJsonBody(id);
-	}
-*/
+
 	void login_password(HTTPServerRequest req, HTTPServerResponse res) {
 		//Do not allow double login, must log out first.
 		//But we'll help out by terminating the old session to get a clean state.

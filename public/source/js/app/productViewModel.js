@@ -1,4 +1,4 @@
-function load_product_page() {
+function load_product_page(product) {
 	$.get("/source/html/product.html", function(data) {
 		$("#content").html(data);
 		
@@ -7,7 +7,7 @@ function load_product_page() {
 
 			self.model = ko.mapping.fromJS({
 				id: "",
-				title: "Test",
+				title: "",
 				created: ""
 			});
 
@@ -27,7 +27,19 @@ function load_product_page() {
 					}
 				});
 			};
+
+			if(product) {
+				ajax_post({model: "product", method: "get_product", title: product}, function(returnedData) {
+					d = returnedData;
+					console.log(returnedData);
+					if(returnedData.success == true) {
+						ko.mapping.fromJS(returnedData.product, self.model);
+					}
+				});
+			}
 		};
+
+
 		ko.cleanNode($("#content")[0]);
 		ko.applyBindings(new productViewModel(), $("#content")[0]);
 	});

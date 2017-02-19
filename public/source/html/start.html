@@ -1,0 +1,11 @@
+<div class="col-md-3">
+	<div class="col-md-6">
+		<label>My products</label>
+	</div>
+	<button type="submit" class="col-md-6 btn btn-success btn-xs" data-bind="click: newProduct">
+		New product
+	</button>
+	<div class="col-md-12" data-bind="foreach: products">
+		<a href="#" data-bind="text: title, click: $root.openProduct"></a>
+	</div>
+</div>
